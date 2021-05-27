@@ -5,17 +5,23 @@
         <div class="row">
             <h1>Games Library</h1>
             <h3>List of Publishers:</h3>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">First Publisher</li>
-                <li class="list-group-item">Second Publisher</li>
-                <li class="list-group-item">Third Publisher</li>
-                <li class="list-group-item">Fourth Publisher</li>
-                <li class="list-group-item">Fifth Publisher</li>
+            <ul class="list-group">
+                <?php foreach ($publishers as $publisher) : ?>
+                    <li class="list-group-item"> <?= $publisher->name; ?></li>
+
+<!--                <li class="list-group-item">First Publisher</li>-->
+<!--                <li class="list-group-item">Second Publisher</li>-->
+<!--                <li class="list-group-item">Third Publisher</li>-->
+<!--                <li class="list-group-item">Fourth Publisher</li>-->
+<!--                <li class="list-group-item">Fifth Publisher</li>-->
+
+                <?php endforeach; ?>
             </ul>
         </div>
 
 <!--Submit Form-->
-        <form method="POST" action="/">
+        <div class="form1">
+        <form method="POST" action="/addPublisher">
             <div class="row g-3 align-items-center">
                 <div class="col-auto">
                     <label for="inputPublisher" class="col-form-label">Add new Publisher:</label>
@@ -28,6 +34,7 @@
                 </div>
             </div>
         </form>
+        </div>
 
 
 

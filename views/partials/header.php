@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="../public/css/bootstrap.css" />
     <title>Game Library Project</title>
 
+    <style>
+        .form1 {
+            margin-top: 16px;
+        }
+        </style>
 </head>
 
 <body>

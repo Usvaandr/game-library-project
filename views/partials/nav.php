@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="navbar-nav">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link active" href="/game-list.php">Game Lib Template</a>
+            <a class="nav-link active" href="/games">Game Lib Template</a>
         </div>
     </div>
 </nav>
