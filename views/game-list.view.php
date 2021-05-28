@@ -1,15 +1,12 @@
 <?php require 'views/partials/header.php'?>
 
-
     <div class="container">
         <div class="row">
             <h1>Games Library</h1>
             <h3>List of Publisher's games:</h3>
             <h6>(Publisher should be fetched from previous page)</h6>
             <h6>(Games should be displayed from the database)</h6>
-
         </div>
-
 <!--    Printed data table-->
         <div class="row">
             <table class="table">
@@ -39,8 +36,6 @@
                 </tbody>
             </table>
         </div>
-
-
 <!--    Submit Form-->
         <div class="row">
             <form method="POST" action="/">
@@ -60,11 +55,6 @@
                 </div>
             </form>
         </div>
-
-
-
     </div>
-
-
 
 <?php require 'views/partials/footer.php' ?>

@@ -1,6 +1,5 @@
 <?php
 // Request CLASS is responsible for fetching information about the current browser request.
-
 class Request
 {
     public static function uri()

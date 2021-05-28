@@ -1,7 +1,6 @@
 <?php
 // all private configurations are stored in this one file.
 
-
 return [
     'database' => [
         'name' => 'library',
