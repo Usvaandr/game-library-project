@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../public/css/bootstrap.css" />
+    <link rel="stylesheet" href="../public/css/custom.css" />
     <title>Game Library Project</title>
 
 </head>
