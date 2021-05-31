@@ -22,4 +22,16 @@ class GamesQueryBuilder
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ)[0]->name;
     }
+
+    public function insertGame($parameters)
+    {
+        $sql = 'insert into games (name, year, publisherID) 
+                values (:name, :year, :publisherID);';
+        try {
+            $statement = $this->pdo->prepare($sql);
+            $statement->execute($parameters);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }
