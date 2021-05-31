@@ -1,5 +1,5 @@
 <?php
 
-$publishers = $app['database']->selectAllPublishers();
+$publishers = $publisherQueryBuilder->selectAllPublishers();
 
 require 'views/index.view.php';
