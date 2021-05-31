@@ -1,5 +1,5 @@
 <?php
 
-$gamesQueryBuilder->deleteGame($_GET['id']);
+$gamesQueryBuilder->deleteGame($_GET['gameID']);
 
-header('Location: /games?publisher='.$_GET['publisher']);
+header('Location: /games?publisherID='.$_GET['publisherID']);

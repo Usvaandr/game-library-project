@@ -1,5 +1,5 @@
 <?php
-$publisherID = $_GET['publisher'];
+$publisherID = $_GET['publisherID'];
 
 $publisherName = $gamesQueryBuilder->selectPublisherName($publisherID);
 

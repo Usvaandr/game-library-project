@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <h1>Games Library</h1>
-            <h3>List of <strong><?=$publisherName; ?></strong> games:</h3>
+            <h3>List of <strong><?= $publisherName; ?></strong> games:</h3>
         </div>
 <!--    Printed data table-->
         <div class="row">
@@ -27,7 +27,7 @@
                         <td><?= $game->year; ?></td>
                         <td><?= $game->publisherID; ?></td>
                         <td>
-                            <a href="/deleteGame?publisher=<?=$publisherID;?>&id=<?=$game->id;?>" title="Delete Publisher" data-toggle="tooltip">
+                            <a href="/deleteGame?publisherID=<?= $publisherID; ?>&gameID=<?=$game->id;?>" title="Delete Publisher" data-toggle="tooltip">
                                 <button class="btn btn-danger">Delete</button>
                             </a>
                         </td>
@@ -38,7 +38,7 @@
         </div>
 <!--    Submit Form-->
         <div class="row">
-            <form method="POST" action="/addGame?publisher=<?=$publisherID;?>">
+            <form method="POST" action="/addGame?publisherID=<?= $publisherID; ?>">
                 <div class="row g-3 align-items-center">
                     <div class="col-auto">
                         <label for="inputGame" class="col-form-label">Add new Game:</label>

@@ -28,10 +28,10 @@
                 <td><?= $publisher->country; ?></td>
                 <td><?= $publisher->founded; ?></td>
                 <td>
-                    <a href="/games?publisher=<?= $publisher->id;?>" title="View Games" data-toggle="tooltip">
+                    <a href="/games?publisherID=<?= $publisher->id;?>" title="View Games" data-toggle="tooltip">
                         <button class="btn btn-success">View</button>
                     </a>
-                    <a href="/deletePublisher?publisher=<?= $publisher->id;?>" title="Delete Publisher" data-toggle="tooltip">
+                    <a href="/deletePublisher?publisherID=<?= $publisher->id;?>" title="Delete Publisher" data-toggle="tooltip">
                         <button class="btn btn-danger">Delete</button>
                     </a>
                 </td>

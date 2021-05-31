@@ -1,5 +1,5 @@
 <?php
-$publisherID = $_GET['publisher'];
+$publisherID = $_GET['publisherID'];
 
 $gamesQueryBuilder->insertGame([
     'name' => $_POST['newGameName'],
@@ -7,4 +7,4 @@ $gamesQueryBuilder->insertGame([
     'publisherID' => $publisherID
 ]);
 
-header('Location: /games?publisher='.$publisherID);
+header('Location: /games?publisherID='.$publisherID);

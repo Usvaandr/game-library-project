@@ -1,5 +1,5 @@
 <?php
 
-$publisherQueryBuilder->deletePublisher($_GET['publisher']);
+$publisherQueryBuilder->deletePublisher($_GET['publisherID']);
 
 header('Location: /');
