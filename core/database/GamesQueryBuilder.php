@@ -34,4 +34,14 @@ class GamesQueryBuilder
             die($e->getMessage());
         }
     }
+
+    public function deleteGame($gameID)
+    {
+        try {
+            $statement = $this->pdo->prepare("delete from games where id = {$gameID};"); // parameters instead of {$table}
+            return $statement->execute();
+        } catch (Exception $e) {
+            die($e->getMessage()); //for local development we could print mysql error message here - $e->getMessage()
+        }
+    }
 }

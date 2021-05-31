@@ -27,4 +27,14 @@ class PublisherQueryBuilder
             die($e->getMessage()); //for local development we could print mysql error message here - $e->getMessage()
         }
     }
+
+    public function deletePublisher($publisherID)
+    {
+        try {
+            $statement = $this->pdo->prepare("delete from publishers where id = {$publisherID};"); // parameters instead of {$table}
+            return $statement->execute();
+        } catch (Exception $e) {
+            die("Game Publisher has games in his library. Delete them first."); //for local development we could print mysql error message here - $e->getMessage()
+        }
+    }
 }

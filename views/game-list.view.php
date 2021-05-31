@@ -14,6 +14,7 @@
                     <th scope="col">Game's Name</th>
                     <th scope="col">Year Released</th>
                     <th scope="col">Publisher ID (Reference)</th>
+                    <th scope="col">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,11 @@
                         <td><?= $game->name; ?></td>
                         <td><?= $game->year; ?></td>
                         <td><?= $game->publisherID; ?></td>
+                        <td>
+                            <a href="/deleteGame?publisher=<?=$publisherID;?>&id=<?=$game->id;?>" title="Delete Publisher" data-toggle="tooltip">
+                                <button class="btn btn-danger">Delete</button>
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

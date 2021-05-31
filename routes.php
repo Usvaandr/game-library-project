@@ -11,3 +11,5 @@ $router->get('', 'controllers/index.php');
 $router->get('games', 'controllers/game-list.php');
 $router->post('addPublisher', 'controllers/addPublisher.php');
 $router->post('addGame', 'controllers/addGame.php');
+$router->get('deletePublisher', 'controllers/deletePublisher.php');
+$router->get('deleteGame', 'controllers/deleteGame.php');
