@@ -15,10 +15,11 @@ class GamesQueryBuilder
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
+
     public function selectPublisherName($publisherID)
     {
         $statement = $this->pdo->prepare("select name from publishers where id = {$publisherID};");
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_CLASS);
+        return $statement->fetchAll(PDO::FETCH_OBJ)[0]->name;
     }
 }

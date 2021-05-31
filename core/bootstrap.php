@@ -9,10 +9,10 @@ require 'core/database/Connection.php';
 require 'core/database/PublisherQueryBuilder.php';
 require 'core/database/GamesQueryBuilder.php';
 
-$app['database'] = new PublisherQueryBuilder(
+$publisherQueryBuilder = new PublisherQueryBuilder(
     Connection::make($app['config']['database'])
 );
-$appGames['database'] = new GamesQueryBuilder(
+$gamesQueryBuilder = new GamesQueryBuilder(
     Connection::make($app['config']['database'])
 );
 

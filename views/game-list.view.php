@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <h1>Games Library</h1>
-            <h3>List of <strong><?= $publisherName[0]->name; ?></strong> games:</h3>
+            <h3>List of <strong><?=$publisherName; ?></strong> games:</h3>
         </div>
 <!--    Printed data table-->
         <div class="row">
