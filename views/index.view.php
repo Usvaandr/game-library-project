@@ -27,7 +27,14 @@
                 <td><?= $publisher->value; ?></td>
                 <td><?= $publisher->country; ?></td>
                 <td><?= $publisher->founded; ?></td>
-                <td><a href="games?publisher=<?= $publisher->id; ?>" title="View Games" data-toggle="tooltip"><button class="btn btn-success">View</button></a></td>
+                <td>
+                    <a href="/games?publisherID=<?= $publisher->id;?>" title="View Games" data-toggle="tooltip">
+                        <button class="btn btn-success">View</button>
+                    </a>
+                    <a href="/deletePublisher?publisherID=<?= $publisher->id;?>" title="Delete Publisher" data-toggle="tooltip">
+                        <button class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
             </tr>
             <?php endforeach; ?>
             </tbody>
