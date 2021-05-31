@@ -7,8 +7,12 @@ require 'core/Router.php';
 require 'core/Request.php';
 require 'core/database/Connection.php';
 require 'core/database/PublisherQueryBuilder.php';
+require 'core/database/GamesQueryBuilder.php';
 
 $app['database'] = new PublisherQueryBuilder(
+    Connection::make($app['config']['database'])
+);
+$appGames['database'] = new GamesQueryBuilder(
     Connection::make($app['config']['database'])
 );
 

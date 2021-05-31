@@ -14,6 +14,7 @@
                 <th scope="col">Net Worth</th>
                 <th scope="col">Country</th>
                 <th scope="col">Year Founded</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -26,6 +27,7 @@
                 <td><?= $publisher->value; ?></td>
                 <td><?= $publisher->country; ?></td>
                 <td><?= $publisher->founded; ?></td>
+                <td><a href="games?<?= $publisher->id; ?>" title="View Games" data-toggle="tooltip"><button class="btn btn-success">View</button></a></td>
             </tr>
             <?php endforeach; ?>
             </tbody>
@@ -58,9 +60,3 @@
     </div>
 
 <?php require 'views/partials/footer.php' ?>
-
-<!--<ul class="list-group">-->
-<!--    --><?php //foreach ($publishers as $publisher) : ?>
-<!--        <li class="list-group-item"> echo $publisher->name; </li>-->
-<!--    --><?php //endforeach; ?>
-<!--</ul>-->
