@@ -32,16 +32,16 @@
         </div>
 <!--    Submit Form-->
         <div class="row">
-            <form method="POST" action="/">
+            <form method="POST" action="/addGame?publisher=<?=$publisherID;?>">
                 <div class="row g-3 align-items-center">
                     <div class="col-auto">
                         <label for="inputGame" class="col-form-label">Add new Game:</label>
                     </div>
                     <div class="col-auto">
-                        <input name="newGameName" id="inputGame" placeholder="name" class="form-control">
+                        <input name="newGameName" id="inputGame" placeholder="Name" class="form-control">
                     </div>
                     <div class="col-auto">
-                        <input name="newGameYear" id="inputGame" placeholder="year" class="form-control">
+                        <input name="newGameYear" id="inputGame" placeholder="Year" class="form-control">
                     </div>
                     <div class="col-auto">
                         <button type="submit" class="btn btn-primary">Add</button>
