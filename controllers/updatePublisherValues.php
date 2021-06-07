@@ -1,9 +1,11 @@
 <?php
 
-$name = $_POST['newPublisher'];
-$value = $_POST['newPublisherValue'];
-$country = $_POST['newPublisherCountry'];
-$founded = $_POST['newPublisherFounded'];
+$publisherID = $_GET['publisherID'];
+
+$name = $_POST['updatedPublisherName'];
+$value = $_POST['updatedPublisherValue'];
+$country = $_POST['updatedPublisherCountry'];
+$year = $_POST['updatedPublisherYear'];
 
 $allPublisherNames = $publisherQueryBuilder->selectAllPublisherNames();
 
@@ -21,21 +23,21 @@ if(empty($country)) {
     $country_err = 'Country is required';
 }
 
-if(empty($founded)) {
+if(empty($year)) {
     $founded_err = 'Year is required';
-} elseif(strlen($founded) < 4) {
+} elseif(strlen($year) < 4) {
     $founded_err = 'Year is too short';
 }
 
 if(empty($name_err) && empty($value_err) && empty($country_err) && empty($founded_err)) {
-    $publisherQueryBuilder->insertPublisher([
-        'name' => $_POST['newPublisher'],
-        'value' => $_POST['newPublisherValue'],
-        'country' => $_POST['newPublisherCountry'],
-        'founded' => $_POST['newPublisherFounded']
-    ]);
+$publisherQueryBuilder->updatePublisher($publisherID, [
+    'name' => $_POST['updatedPublisherName'],
+    'value' => $_POST['updatedPublisherValue'],
+    'country' => $_POST['updatedPublisherCountry'],
+    'year' => $_POST['updatedPublisherYear']
+]);
 
     header('Location: /');
 } else {
-    include('controllers/index.php');
+    include('controllers/updatePublisher.php');
 }
