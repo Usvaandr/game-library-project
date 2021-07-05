@@ -27,7 +27,10 @@
                         <td><?= $game->year; ?></td>
                         <td><?= $game->publisherID; ?></td>
                         <td>
-                            <a href="/deleteGame?publisherID=<?= $publisherID; ?>&gameID=<?=$game->id;?>" title="Delete Publisher" data-toggle="tooltip">
+                            <a href="/updateGame?publisherID=<?= $publisherID; ?>&gameID=<?=$game->id; ?>" title="Update Game" data-toggle="tooltip">
+                                <button class="btn btn-warning">Update</button>
+                            </a>
+                            <a href="/deleteGame?publisherID=<?= $publisherID; ?>&gameID=<?=$game->id; ?>" title="Delete Publisher" data-toggle="tooltip">
                                 <button class="btn btn-danger">Delete</button>
                             </a>
                         </td>

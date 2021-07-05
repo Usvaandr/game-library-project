@@ -17,6 +17,14 @@ class GamesQueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
 
+    public function selectThisGame($id)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM games WHERE id = {$id}");
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS)[0];
+    }
+
     public function selectPublisherName($publisherID)
     {
         $statement = $this->pdo->prepare("SELECT name FROM publishers WHERE id = {$publisherID};");
@@ -45,6 +53,18 @@ class GamesQueryBuilder
             return $statement->execute();
         } catch (Exception $e) {
             die($e->getMessage()); //for local development we could print mysql error message here - $e->getMessage()
+        }
+    }
+    public function updateGame($gameID, $parameters)
+    {
+        try {
+            $statement = $this->pdo->prepare("
+        UPDATE games 
+        SET name = :name, year = :year, publisherID = :publisher
+        WHERE id = {$gameID};");
+            $statement->execute($parameters);
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
     }
 }

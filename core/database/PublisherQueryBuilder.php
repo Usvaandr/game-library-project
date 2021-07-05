@@ -34,6 +34,14 @@ class PublisherQueryBuilder
             return $statement->fetchAll(PDO::FETCH_CLASS)[0];
     }
 
+    public function selectThisPublisherName($id)
+    {
+        $statement = $this->pdo->prepare("SELECT name FROM publishers WHERE id = {$id}");
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS)[0]->name;
+    }
+
     public function insertPublisher($parameters)
     {
         $sql = 'INSERT INTO publishers (name, value, country, founded) 
@@ -61,7 +69,7 @@ class PublisherQueryBuilder
         try {
         $statement = $this->pdo->prepare("
         UPDATE publishers 
-        SET name = :name, value = :value, country = :country, founded = :year 
+        SET name = :name, value = :value, country = :country, founded = :founded 
         WHERE id = {$publisherID};");
         $statement->execute($parameters);
         } catch (Exception $e) {

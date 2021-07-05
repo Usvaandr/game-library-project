@@ -1,6 +1,6 @@
 <?php require 'views/partials/header.php'?>
 
-<div class="updatePublisher-wrapper">
+<div class="updater-view-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -11,13 +11,11 @@
                         <label>Publisher's Name</label>
                         <input type="text" name="updatedPublisherName" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?= $name; ?>">
                         <span class="invalid-feedback"><?php echo $name_err;?></span>
-
                     </div>
                     <div class="form-group">
                         <label>Net Worth</label>
                         <input type="text" name="updatedPublisherValue" class="form-control <?php echo (!empty($value_err)) ? 'is-invalid' : ''; ?>" value="<?= $value; ?>">
                         <span class="invalid-feedback"><?php echo $value_err;?></span>
-
                     </div>
                     <div class="form-group">
                         <label>Country</label>
@@ -26,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label>Year Founded</label>
-                        <input type="text" name="updatedPublisherYear" class="form-control <?php echo (!empty($founded_err)) ? 'is-invalid' : ''; ?>" value="<?= $year; ?>">
+                        <input type="text" name="updatedPublisherFounded" class="form-control <?php echo (!empty($founded_err)) ? 'is-invalid' : ''; ?>" value="<?= $year; ?>">
                         <span class="invalid-feedback"><?php echo $founded_err;?></span>
                     </div>
                     <button type="submit" class="btn btn-primary form1">Submit</button>

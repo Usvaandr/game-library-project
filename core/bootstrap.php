@@ -8,6 +8,7 @@ require 'core/Request.php';
 require 'core/database/Connection.php';
 require 'core/database/PublisherQueryBuilder.php';
 require 'core/database/GamesQueryBuilder.php';
+require 'core/Validation.php';
 
 $publisherQueryBuilder = new PublisherQueryBuilder(
     Connection::make($app['config']['database'])
@@ -15,5 +16,7 @@ $publisherQueryBuilder = new PublisherQueryBuilder(
 $gamesQueryBuilder = new GamesQueryBuilder(
     Connection::make($app['config']['database'])
 );
+
+$validation = new Validation();
 
 //config.php will return an array and we pass it to the make() method.

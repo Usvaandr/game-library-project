@@ -5,37 +5,23 @@ $publisherID = $_GET['publisherID'];
 $name = $_POST['updatedPublisherName'];
 $value = $_POST['updatedPublisherValue'];
 $country = $_POST['updatedPublisherCountry'];
-$year = $_POST['updatedPublisherYear'];
+$founded = $_POST['updatedPublisherFounded'];
 
-$allPublisherNames = $publisherQueryBuilder->selectAllPublisherNames();
+$name_err = $validation->validationNameUpdate($name);
+$value_err = $validation->validationValue($value);
+$country_err = $validation->validationCountry($country);
+$founded_err = $validation->validationFounded($founded);
 
-if(empty($name)) {
-    $name_err = 'Name is required';
-} elseif (in_array($name, $allPublisherNames)){
-    $name_err = 'This publishers already exists';
-}
-
-if(empty($value)) {
-    $value_err = 'Value is required';
-}
-
-if(empty($country)) {
-    $country_err = 'Country is required';
-}
-
-if(empty($year)) {
-    $founded_err = 'Year is required';
-} elseif(strlen($year) < 4) {
-    $founded_err = 'Year is too short';
-}
-
-if(empty($name_err) && empty($value_err) && empty($country_err) && empty($founded_err)) {
-$publisherQueryBuilder->updatePublisher($publisherID, [
-    'name' => $_POST['updatedPublisherName'],
-    'value' => $_POST['updatedPublisherValue'],
-    'country' => $_POST['updatedPublisherCountry'],
-    'year' => $_POST['updatedPublisherYear']
-]);
+if (empty($name_err) && empty($value_err) && empty($country_err) && empty($founded_err)) {
+    $publisherQueryBuilder->updatePublisher(
+        $publisherID,
+        [
+        'name' => $_POST['updatedPublisherName'],
+        'value' => $_POST['updatedPublisherValue'],
+        'country' => $_POST['updatedPublisherCountry'],
+        'founded' => $_POST['updatedPublisherFounded']
+        ]
+    );
 
     header('Location: /');
 } else {

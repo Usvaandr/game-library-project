@@ -31,10 +31,10 @@
                     <a href="/games?publisherID=<?= $publisher->id;?>" title="View Games" data-toggle="tooltip">
                         <button class="btn btn-success">View</button>
                     </a>
-                    <a href="/updatePublisher?publisherID=<?= $publisher->id;?>" title="Update Publisher" data-toggle="tooltip">
+                    <a href="/updatePublisher?publisherID=<?= $publisher->id; ?>" title="Update Publisher" data-toggle="tooltip">
                         <button class="btn btn-warning">Update</button>
                     </a>
-                    <a href="/deletePublisher?publisherID=<?= $publisher->id;?>" title="Delete Publisher" data-toggle="tooltip">
+                    <a href="/deletePublisher?publisherID=<?= $publisher->id; ?>" title="Delete Publisher" data-toggle="tooltip">
                         <button class="btn btn-danger">Delete</button>
                     </a>
                 </td>
@@ -50,7 +50,7 @@
                     <label for="inputPublisher" class="col-form-label">Add new Publisher:</label>
                 </div>
                 <div class="col-auto">
-                    <input name="newPublisher" id="inputPublisher" placeholder="Publisher's name" class="form-control" value="<?= htmlspecialchars($name); ?>">
+                    <input name="newPublisherName" id="inputPublisher" placeholder="Publisher's name" class="form-control" value="<?= htmlspecialchars($name); ?>">
                     <?php if(isset($name_err)){ ?>
                         <p> <?= $name_err; ?></p>
                     <?php } ?>
