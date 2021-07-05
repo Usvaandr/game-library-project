@@ -28,10 +28,10 @@ class PublisherQueryBuilder
 
     public function selectThisPublisher($id)
     {
-            $statement = $this->pdo->prepare("SELECT * FROM publishers WHERE id = {$id}");
-            $statement->execute();
+        $statement = $this->pdo->prepare("SELECT * FROM publishers WHERE id = {$id}");
+        $statement->execute();
 
-            return $statement->fetchAll(PDO::FETCH_CLASS)[0];
+        return $statement->fetchAll(PDO::FETCH_CLASS)[0];
     }
 
     public function selectThisPublisherName($id)
@@ -67,11 +67,11 @@ class PublisherQueryBuilder
     public function updatePublisher($publisherID, $parameters)
     {
         try {
-        $statement = $this->pdo->prepare("
-        UPDATE publishers 
-        SET name = :name, value = :value, country = :country, founded = :founded 
-        WHERE id = {$publisherID};");
-        $statement->execute($parameters);
+            $statement = $this->pdo->prepare("
+                UPDATE publishers 
+                SET name = :name, value = :value, country = :country, founded = :founded 
+                WHERE id = {$publisherID};");
+            $statement->execute($parameters);
         } catch (Exception $e) {
             die($e->getMessage());
         }

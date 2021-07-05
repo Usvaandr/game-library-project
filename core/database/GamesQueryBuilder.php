@@ -59,9 +59,9 @@ class GamesQueryBuilder
     {
         try {
             $statement = $this->pdo->prepare("
-        UPDATE games 
-        SET name = :name, year = :year, publisherID = :publisher
-        WHERE id = {$gameID};");
+                UPDATE games 
+                SET name = :name, year = :year, publisherID = :publisher
+                WHERE id = {$gameID};");
             $statement->execute($parameters);
         } catch (Exception $e) {
             die($e->getMessage());
