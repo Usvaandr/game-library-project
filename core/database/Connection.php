@@ -2,7 +2,7 @@
 
 class Connection
 {
-    public static function make($config)
+    public static function make(array $config): PDO
     {
         try {
             return new PDO(

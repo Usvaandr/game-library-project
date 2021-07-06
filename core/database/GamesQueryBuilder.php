@@ -4,12 +4,12 @@ class GamesQueryBuilder
 {
     protected $pdo;
 
-    public function __construct($pdo)
+    public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
 
-    public function selectAllGames($publisherID)
+    public function selectAllGames(int $publisherID): array
     {
         $statement = $this->pdo->prepare("SELECT * FROM games WHERE publisherID = {$publisherID};");
         $statement->execute();
@@ -17,7 +17,7 @@ class GamesQueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
 
-    public function selectThisGame($id)
+    public function selectThisGame(int $id): object
     {
         $statement = $this->pdo->prepare("SELECT * FROM games WHERE id = {$id}");
         $statement->execute();
@@ -25,7 +25,7 @@ class GamesQueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS)[0];
     }
 
-    public function selectPublisherName($publisherID)
+    public function selectPublisherName(int $publisherID): string
     {
         $statement = $this->pdo->prepare("SELECT name FROM publishers WHERE id = {$publisherID};");
         $statement->execute();
@@ -33,7 +33,7 @@ class GamesQueryBuilder
         return $statement->fetchAll(PDO::FETCH_OBJ)[0]->name;
     }
 
-    public function insertGame($parameters)
+    public function insertGame(array $parameters): void
     {
         $sql = 'INSERT INTO games (name, year, publisherID) 
                 VALUES (:name, :year, :publisherID);';
@@ -45,17 +45,17 @@ class GamesQueryBuilder
         }
     }
 
-    public function deleteGame($gameID)
+    public function deleteGame(int $gameID): void
     {
         try {
-            $statement = $this->pdo->prepare("DELETE FROM games WHERE id = {$gameID};"); // parameters instead of {$table}
-
-            return $statement->execute();
+            $statement = $this->pdo->prepare("DELETE FROM games WHERE id = {$gameID};");
+            $statement->execute();
         } catch (Exception $e) {
             die($e->getMessage()); //for local development we could print mysql error message here - $e->getMessage()
         }
     }
-    public function updateGame($gameID, $parameters)
+
+    public function updateGame(int $gameID, array $parameters): void
     {
         try {
             $statement = $this->pdo->prepare("
