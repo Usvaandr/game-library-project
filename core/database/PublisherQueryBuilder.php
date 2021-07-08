@@ -4,12 +4,12 @@ class PublisherQueryBuilder
 {
     protected $pdo;
 
-    public function __construct($pdo)
+    public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
 
-    public function selectAllPublishers()
+    public function selectAllPublishers(): array
     {
         $statement = $this->pdo->prepare("SELECT * FROM publishers"); // parameters instead of {$table}
         $statement->execute();
@@ -17,7 +17,7 @@ class PublisherQueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
 
-    public function selectAllPublisherNames()
+    public function selectAllPublisherNames(): array
     {
         $statement = $this->pdo->prepare("SELECT name FROM publishers");
         $statement->execute();
@@ -26,7 +26,7 @@ class PublisherQueryBuilder
         return array_column($array, 'name');
     }
 
-    public function selectThisPublisher($id)
+    public function selectThisPublisher(int $id): object
     {
         $statement = $this->pdo->prepare("SELECT * FROM publishers WHERE id = {$id}");
         $statement->execute();
@@ -34,7 +34,7 @@ class PublisherQueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS)[0];
     }
 
-    public function selectThisPublisherName($id)
+    public function selectThisPublisherName(int $id): string
     {
         $statement = $this->pdo->prepare("SELECT name FROM publishers WHERE id = {$id}");
         $statement->execute();
@@ -42,7 +42,7 @@ class PublisherQueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS)[0]->name;
     }
 
-    public function insertPublisher($parameters)
+    public function insertPublisher(array $parameters): void
     {
         $sql = 'INSERT INTO publishers (name, value, country, founded) 
                 VALUES (:name, :value, :country, :founded);';
@@ -54,17 +54,30 @@ class PublisherQueryBuilder
         }
     }
 
-    public function deletePublisher($publisherID)
+    public function deletePublisher(int $publisherID): void
     {
         try {
             $statement = $this->pdo->prepare("DELETE FROM publishers WHERE id = {$publisherID};"); // parameters instead of {$table}
-
-            return $statement->execute();
+            $statement->execute();
         } catch (Exception $e) {
             die("Game Publisher has games in his library. Delete them first."); //for local development we could print mysql error message here - $e->getMessage()
         }
     }
-    public function updatePublisher($publisherID, $parameters)
+
+    public function deletePublisherAll(int $publisherID): void
+    {
+        try {
+            $statement1 = $this->pdo->prepare("DELETE FROM games WHERE publisherID = {$publisherID};");
+            $statement1->execute();
+
+            $statement2 = $this->pdo->prepare("DELETE FROM publishers WHERE id = {$publisherID};");
+            $statement2->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function updatePublisher(int $publisherID, array $parameters): void
     {
         try {
             $statement = $this->pdo->prepare("

@@ -37,6 +37,9 @@
                     <a href="/deletePublisher?publisherID=<?= $publisher->id; ?>" title="Delete Publisher" data-toggle="tooltip">
                         <button class="btn btn-danger">Delete</button>
                     </a>
+                    <a href="/deletePublisherAll?publisherID=<?= $publisher->id; ?>" title="Delete Publisher with All Games" data-toggle="tooltip">
+                        <button class="btn btn-danger">Delete ALL</button>
+                    </a>
                 </td>
             </tr>
             <?php endforeach; ?>
