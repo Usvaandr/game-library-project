@@ -18,3 +18,8 @@ $router->get('updatePublisher', 'controllers/updatePublisher.php');
 $router->get('updateGame', 'controllers/updateGame.php');
 $router->post('updateGameValues', 'controllers/updateGameValues.php');
 $router->post('updatePublisherValues', 'controllers/updatePublisherValues.php');
+$router->get('login', 'controllers/login.php');
+$router->get('logout', 'controllers/logout.php');
+$router->get('register', 'controllers/register.php');
+$router->post('registerCreateUser', 'controllers/registerCreateUser.php');
+$router->post('loginProcess', 'controllers/loginProcess.php');

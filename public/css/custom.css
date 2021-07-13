@@ -5,3 +5,9 @@
     width: 600px;
     margin: 0 auto;
 }
+.loginBody {
+    font: 14px sans-serif;
+}
+.loginWrapper {
+    width: 360px; padding: 20px;
+}
