@@ -2,21 +2,20 @@
 
 class Validation {
 
-//    private function getQueryBuilder()
-//    {
-//        return new PublisherQueryBuilder(
-//            Connection::make($app['config']['database'])
-//        );
-//    }
+    private function getQueryBuilder(): object
+    {
+        $app['config'] = require 'config.php';
 
-    /**
-     * @param string[] $allPublisherNames
-     */
-    public function validationName(string $name, array $allPublisherNames): ?string
+        return new PublisherQueryBuilder(
+            Connection::make($app['config']['database'])
+        );
+    }
+
+    public function validationName(string $name): ?string
     {
         if (empty($name)) {
             return 'Name is required';
-        } elseif (in_array($name, $allPublisherNames)) {
+        } elseif (in_array($name, $this->getQueryBuilder()->selectAllPublisherNames())) {
             return 'This publishers already exists';
         }
 
@@ -56,8 +55,8 @@ class Validation {
     {
         if (empty($name)) {
             return 'Name is required';
-//        } elseif (in_array($name, $this->getQueryBuilder()->selectAllPublisherNames())) {
-//            return 'This publishers already exists';
+        } elseif (in_array($name, $this->getQueryBuilder()->selectAllPublisherNames())) {
+            return 'This publishers already exists';
         }
 
         return null;

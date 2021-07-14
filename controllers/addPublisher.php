@@ -5,9 +5,7 @@ $value = $_POST['newPublisherValue'];
 $country = $_POST['newPublisherCountry'];
 $founded = $_POST['newPublisherFounded'];
 
-$allPublisherNames = $publisherQueryBuilder->selectAllPublisherNames();
-
-$name_err = $validation->validationName($name, $allPublisherNames);
+$name_err = $validation->validationName($name);
 $value_err = $validation->validationValue($value);
 $country_err = $validation->validationCountry($country);
 $founded_err = $validation->validationFounded($founded);
