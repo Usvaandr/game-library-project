@@ -2,7 +2,7 @@
 
 class Validation {
 
-    private function getQueryBuilder()
+    private function getQueryBuilder(): object
     {
         $app['config'] = require 'config.php';
 

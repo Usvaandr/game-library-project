@@ -1,10 +1,10 @@
 <?php
 
-class LoginValidation
+class LoginValidator
 {
     public function validationUsername(string $username): ?string
     {
-        if(empty($username)){
+        if (empty($username)){
             return "Please enter username.";
         }
 
@@ -13,7 +13,7 @@ class LoginValidation
 
     public function validationPassword(string $password): ?string
     {
-        if(empty($password)){
+        if (empty($password)){
             return "Please enter your password.";
         }
 

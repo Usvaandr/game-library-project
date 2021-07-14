@@ -11,7 +11,7 @@ require 'core/database/PublisherQueryBuilder.php';
 require 'core/database/GamesQueryBuilder.php';
 require 'core/Validation.php';
 require 'core/LoginCheck.php';
-require 'core/LoginValidation.php';
+require 'core/LoginValidator.php';
 
 $loginQueryBuilder = new LoginQueryBuilder(
     Connection::make($app['config']['database'])
@@ -22,9 +22,8 @@ $publisherQueryBuilder = new PublisherQueryBuilder(
 $gamesQueryBuilder = new GamesQueryBuilder(
     Connection::make($app['config']['database'])
 );
-
 $validation = new Validation();
 $loginCheck = new LoginCheck();
-$loginValidation = new LoginValidation();
+$loginValidator = new LoginValidator();
 
 //config.php will return an array and we pass it to the make() method.

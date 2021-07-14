@@ -18,12 +18,11 @@ class LoginQueryBuilder
             ");
             $statement->execute($parameters);
         } catch (Exception $e) {
-//            die($e->getMessage());
             die("Invalid name.");
         }
     }
 
-    public function selectUser(string $username): object
+    public function selectUser(string $username): ?object
     {
         try {
             $statement = $this->pdo->prepare("

@@ -5,10 +5,10 @@ $password = trim($_POST["password"]);
 
 $selectedUser = $loginQueryBuilder->selectUser($username);
 
-$username_err = $loginValidation->validationUsername($username);
-$password_err = $loginValidation->validationPassword($password);
+$username_err = $loginValidator->validationUsername($username);
+$password_err = $loginValidator->validationPassword($password);
 
-if ( !isset($username_err) & !isset($password_err)) {
+if (!isset($username_err) & !isset($password_err)) {
     if ($selectedUser->password == $password) {
         session_start();
 
