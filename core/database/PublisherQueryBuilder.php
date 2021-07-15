@@ -1,17 +1,10 @@
 <?php
 
-class PublisherQueryBuilder
+class PublisherQueryBuilder extends QueryBuilder
 {
-    protected $pdo;
-
-    public function __construct(PDO $pdo)
-    {
-        $this->pdo = $pdo;
-    }
-
     public function selectAllPublishers(): array
     {
-        $statement = $this->pdo->prepare("SELECT * FROM publishers"); // parameters instead of {$table}
+        $statement = $this->pdo->prepare("SELECT * FROM publishers");
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_CLASS);
@@ -24,22 +17,6 @@ class PublisherQueryBuilder
         $array = $statement->fetchAll(PDO::FETCH_CLASS);
 
         return array_column($array, 'name');
-    }
-
-    public function selectThisPublisher(int $id): object
-    {
-        $statement = $this->pdo->prepare("SELECT * FROM publishers WHERE id = {$id}");
-        $statement->execute();
-
-        return $statement->fetchAll(PDO::FETCH_CLASS)[0];
-    }
-
-    public function selectThisPublisherName(int $id): string
-    {
-        $statement = $this->pdo->prepare("SELECT name FROM publishers WHERE id = {$id}");
-        $statement->execute();
-
-        return $statement->fetchAll(PDO::FETCH_CLASS)[0]->name;
     }
 
     public function insertPublisher(array $parameters): void

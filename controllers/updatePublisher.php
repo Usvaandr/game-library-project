@@ -2,7 +2,7 @@
 
 $publisherID = $_GET['publisherID'];
 
-$publisherValues = $publisherQueryBuilder->selectThisPublisher($publisherID);
+$publisherValues = $publisherQueryBuilder->selectRow('publishers', $publisherID);
 
 $name = $publisherValues->name;
 $value = $publisherValues->value;
