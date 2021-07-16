@@ -1,7 +1,7 @@
 <?php
 $publisherID = $_GET['publisherID'];
 
-$publisherName = $gamesQueryBuilder->selectName('publishers', $publisherID);
+$publisherName = $gamesQueryBuilder->selectPublisherName($publisherID);
 
 $games = $gamesQueryBuilder->selectAllGames($publisherID);
 

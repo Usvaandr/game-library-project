@@ -5,9 +5,9 @@ $publishers = $publisherQueryBuilder->selectAllPublishers();
 $gameID = $_GET['gameID'];
 $publisherID = $_GET['publisherID'];
 
-$publisherName = $publisherQueryBuilder->selectName('publishers', $publisherID);
+$publisherName = $publisherQueryBuilder->selectThisPublisherName($publisherID);
 
-$gameValues = $gamesQueryBuilder->selectRow('games', $gameID);
+$gameValues = $gamesQueryBuilder->selectThisGame($gameID);
 
 $name = $gameValues->name;
 $year = $gameValues->year;

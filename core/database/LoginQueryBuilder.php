@@ -1,7 +1,13 @@
 <?php
 
-class LoginQueryBuilder extends QueryBuilder
+class LoginQueryBuilder
 {
+    protected $pdo;
+
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
 
     public function insertUser(array $parameters): void
     {

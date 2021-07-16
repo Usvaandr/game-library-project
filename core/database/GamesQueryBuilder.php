@@ -1,13 +1,36 @@
 <?php
 
-class GamesQueryBuilder extends QueryBuilder
+class GamesQueryBuilder
 {
+    protected $pdo;
+
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
     public function selectAllGames(int $publisherID): array
     {
         $statement = $this->pdo->prepare("SELECT * FROM games WHERE publisherID = {$publisherID};");
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_CLASS);
+    }
+
+    public function selectThisGame(int $id): object
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM games WHERE id = {$id}");
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS)[0];
+    }
+
+    public function selectPublisherName(int $publisherID): string
+    {
+        $statement = $this->pdo->prepare("SELECT name FROM publishers WHERE id = {$publisherID};");
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_OBJ)[0]->name;
     }
 
     public function insertGame(array $parameters): void
@@ -28,7 +51,7 @@ class GamesQueryBuilder extends QueryBuilder
             $statement = $this->pdo->prepare("DELETE FROM games WHERE id = {$gameID};");
             $statement->execute();
         } catch (Exception $e) {
-            die($e->getMessage());
+            die($e->getMessage()); //for local development we could print mysql error message here - $e->getMessage()
         }
     }
 
