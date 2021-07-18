@@ -3,6 +3,12 @@
 
     <h2>Sign Up</h2>
     <p>Please fill this form to create an account.</p>
+
+<?php
+if(!empty($reg_err)){
+    echo '<div class="alert alert-danger">' . $reg_err . '</div>';
+}
+?>
 <!--    <form action="--><?php //echo htmlspecialchars($_SERVER["PHP_SELF"]); ?><!--" method="post">-->
     <form action="registerCreateUser" method="post">
         <div class="form-group">

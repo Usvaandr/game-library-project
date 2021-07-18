@@ -5,6 +5,9 @@ $app['config'] = require 'config.php';
 
 require 'core/Router.php';
 require 'core/Request.php';
+require 'core/models/User.php';
+require 'core/models/Game.php';
+require 'core/models/Publisher.php';
 require 'core/database/Connection.php';
 require 'core/database/LoginQueryBuilder.php';
 require 'core/database/PublisherQueryBuilder.php';

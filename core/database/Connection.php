@@ -12,7 +12,7 @@ class Connection
                 $config['options']
             );
         } catch (PDOException $e) {
-            die($e->getMessage());
+            echo "Whoops. Database can't connect";
         }
     }
 }
