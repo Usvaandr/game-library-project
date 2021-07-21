@@ -6,6 +6,12 @@
             <h1>Games Library</h1>
             <h3>List of Publishers:</h3>
         </div>
+
+        <?php
+        if(!empty($delete_err)){
+            echo '<div class="alert alert-danger">' . $delete_err . '</div>';
+        }
+        ?>
         <table class="table">
             <thead>
             <tr>

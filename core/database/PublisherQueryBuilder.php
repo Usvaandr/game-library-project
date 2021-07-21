@@ -48,19 +48,21 @@ class PublisherQueryBuilder
                 VALUES (:name, :value, :country, :founded);';
         try {
             $statement = $this->pdo->prepare($sql);
-            $statement->execute($parameters); //not clear why we use $parameters in this line
+            $statement->execute($parameters);
         } catch (Exception $e) {
-            die($e->getMessage()); //for local development we could print mysql error message here - $e->getMessage()
+            echo $e->getMessage();
         }
     }
 
-    public function deletePublisher(int $publisherID): void
+    public function deletePublisher(int $publisherID): ?string
     {
         try {
-            $statement = $this->pdo->prepare("DELETE FROM publishers WHERE id = {$publisherID};"); // parameters instead of {$table}
+            $statement = $this->pdo->prepare("DELETE FROM publishers WHERE id = {$publisherID};");
             $statement->execute();
+
+            return null;
         } catch (Exception $e) {
-            die("Game Publisher has games in his library. Delete them first."); //for local development we could print mysql error message here - $e->getMessage()
+            return "Game Publisher has games in his library. Delete them first.";
         }
     }
 
@@ -73,7 +75,7 @@ class PublisherQueryBuilder
             $statement2 = $this->pdo->prepare("DELETE FROM publishers WHERE id = {$publisherID};");
             $statement2->execute();
         } catch (Exception $e) {
-            die($e->getMessage());
+            echo $e->getMessage();
         }
     }
 
@@ -86,7 +88,7 @@ class PublisherQueryBuilder
                 WHERE id = {$publisherID};");
             $statement->execute($parameters);
         } catch (Exception $e) {
-            die($e->getMessage());
+            echo $e->getMessage();
         }
     }
 }

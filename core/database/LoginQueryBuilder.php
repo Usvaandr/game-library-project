@@ -9,7 +9,7 @@ class LoginQueryBuilder
         $this->pdo = $pdo;
     }
 
-    public function insertUser(array $parameters): void
+    public function insertUser(array $parameters): ?string
     {
         try {
             $statement = $this->pdo->prepare("
@@ -17,8 +17,10 @@ class LoginQueryBuilder
                 VALUES (:username, :password);  
             ");
             $statement->execute($parameters);
+
+            return null;
         } catch (Exception $e) {
-            die("Invalid name.");
+            return "Username already exists.";
         }
     }
 
@@ -34,7 +36,7 @@ class LoginQueryBuilder
 
             return $statement->fetchAll(PDO::FETCH_CLASS)[0];
         } catch (Exception $e) {
-            die($e->getMessage());
+            echo $e->getMessage();
         }
     }
 }

@@ -41,7 +41,7 @@ class GamesQueryBuilder
             $statement = $this->pdo->prepare($sql);
             $statement->execute($parameters);
         } catch (Exception $e) {
-            die($e->getMessage());
+            echo $e->getMessage();
         }
     }
 
@@ -51,7 +51,7 @@ class GamesQueryBuilder
             $statement = $this->pdo->prepare("DELETE FROM games WHERE id = {$gameID};");
             $statement->execute();
         } catch (Exception $e) {
-            die($e->getMessage()); //for local development we could print mysql error message here - $e->getMessage()
+            echo $e->getMessage();
         }
     }
 
@@ -64,7 +64,7 @@ class GamesQueryBuilder
                 WHERE id = {$gameID};");
             $statement->execute($parameters);
         } catch (Exception $e) {
-            die($e->getMessage());
+            echo $e->getMessage();
         }
     }
 }

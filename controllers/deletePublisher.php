@@ -1,5 +1,9 @@
 <?php
 
-$publisherQueryBuilder->deletePublisher($_GET['publisherID']);
+$delete_err = $publisherQueryBuilder->deletePublisher($_GET['publisherID']);
 
-header('Location: /');
+if (!isset($deleteErr)) {
+    require 'controllers/index.php';
+} else {
+    header('Location: /');
+}
